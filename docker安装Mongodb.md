@@ -37,3 +37,10 @@
 
         @ ./mongo
 
+## 在Windows上进行后续工作
+
+- 在虚拟机内成功安装Mongodb后，我们后续为了方便开发，可在Windows上进行工作
+
+- 参考意见：可安装`Studio 3T`，该软件支持远程连接数据库、数据可视化、SQL语句开发和一键导入数据等
+
+- 官网下载速度很慢，可使用[我的百度云下载链接](https://pan.baidu.com/s/1Sghv5r7bjdMTwV_sFG3pxg)，亲测有效且无捆绑软件
