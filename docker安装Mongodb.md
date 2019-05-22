@@ -8,10 +8,10 @@
 
 - 如果没安装Docker，需提前安装
 
-            # 更新源
-            $ sudo apt-get update
+        # 更新源
+        $ sudo apt-get update
 
-            $ sudo apt-get install docker.io
+        $ sudo apt-get install docker.io
 
 - Docker安装成功后，进行Mongodb的配置
 
