@@ -21,11 +21,11 @@ def homePage(request):
     # return t.render()
     return render(request,'index.html')
 def searchUser(request):#根据用户ID搜索
-    a = {}
-    return render(request, '', a=a)
+    _record1 = {}
+    return render(request, '', {'_record1': _record1})
 def searchMovie(request):#关键字
-    a={}
-    return render(request,'',a=a)
+    _record2={}
+    return render(request,'',{'_record2': _record2})
 def searchTop(request):#top20
-    a={}
-    return render(request,'',a=a)
+    _record3={}
+    return render(request,'',{'_record3': _record3})
