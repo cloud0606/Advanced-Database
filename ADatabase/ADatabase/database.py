@@ -5,6 +5,10 @@ from mongoengine import *
 # 处理数据库连接
 
 class Mongodb():
+
+    client = pymongo.MongoClient('mongodb://62.234.117.231:27017/')
+    db = client['local']
+    
     # 根据用户ID进行查询
     def userInformations(self,userID):
         _record1 = {}
