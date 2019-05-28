@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import json
 from django.template import loader, Context
-from ADatabase.ADatabase.database import *
+
 def hello(request):
     context = {}
     context['hello'] = 'Hello World!'
