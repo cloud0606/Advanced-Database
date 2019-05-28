@@ -12,8 +12,6 @@ def homePage(request):
     return render(request,'index.html')
  # 根据用户ID进行查询
 def userInformations(request):
-     artical = movies.objects[:10]
-     print(artical)
      _record1 = {}
      return render(request, 'index.html', {'record1': json.dumps(_record1)})
 
