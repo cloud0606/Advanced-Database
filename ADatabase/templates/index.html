@@ -9,6 +9,8 @@
 
 	<link rel="stylesheet" href="../static/css/reset.css">
 	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/query.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="../static/js/modernizr.js"></script>
   	
 	<title>Advanced Database Mongodb</title>
@@ -27,19 +29,105 @@
 			<li>
 				<div>
 					<h2>查询用户观影信息</h2>
-					<a class="cd-btn">Article &amp; Download</a>
+					<div class="UserQuery">
+					<form>
+						<div class="form-group">
+						  <label for="UserID">用户ID</label>
+						  <input type="email" class="form-control" id="UserID" aria-describedby="emailHelp" placeholder="Enter email">
+						  <small id="q1Help" class="form-text text-muted">根据用户ID，搜索用户所看到的电影名字和评分</small>
+						  <button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+
+					  </form>
+					<div>
+					<div class="pre-scrollable table-responsive" style="height:200px; overflow:auto" >
+							<table class="table pre-scrollable" >
+									<thead>
+									  <tr>
+										<th scope="col">#</th>
+										<th scope="col">First</th>
+										<th scope="col">Last</th>
+										<th scope="col">Handle</th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<th scope="row">1</th>
+										<td>Mark</td>
+										<td>Otto</td>
+										<td>
+												<button type="button" class="btn btn-outline-info">Info</button>
+												<button type="button" class="btn btn-outline-info">Info</button>
+												<button type="button" class="btn btn-outline-info">Info</button>
+										</td>
+									  </tr>
+									  <tr>
+										<th scope="row">2</th>
+										<td>Jacob</td>
+										<td>Thornton</td>
+										<td>@fat</td>
+									  </tr>
+									  <tr>
+										<th scope="row">3</th>
+										<td>Larry</td>
+										<td>the Bird</td>
+										<td>@twitter</td>
+									  </tr>
+									  <tr>
+											<th scope="row">3</th>
+											<td>Larry</td>
+											<td>the Bird</td>
+											<td>@twitter</td>
+										  </tr>
+										  <tr>
+												<th scope="row">3</th>
+												<td>Larry</td>
+												<td>the Bird</td>
+												<td>@twitter</td>
+											  </tr>
+											  <tr>
+													<th scope="row">3</th>
+													<td>Larry</td>
+													<td>the Bird</td>
+													<td>@twitter</td>
+												  </tr>
+									  
+									</tbody>
+								  </table>
+					</div>
+					
 				</div>
 			</li>
 
 			<li>
 				<div>
 					<h2>搜索关键词电影</h2>
+					<div class="UserQuery">
+						<form>
+							<div class="form-group">
+							  <label for="KeyWord">用户ID</label>
+							  <input type="email" class="form-control" id="KeyWord" aria-describedby="emailHelp" placeholder="Enter email">
+							  <small id="q2Help" class="form-text text-muted">根据用户ID，搜索用户所看到的电影名字和评分</small>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						  </form>
+					<div>
 				</div>
 			</li>
 
 			<li>
 				<div>
 					<h2>查询最受欢迎的电影</h2>
+					<div class="UserQuery">
+						<form>
+							<div class="form-group">
+							  <label for="Style">风格</label>
+							  <input type="email" class="form-control" id="Style" aria-describedby="emailHelp" placeholder="Enter email">
+							  <small id="q3Help" class="form-text text-muted">查询某一风格最受欢迎的20部电影</small>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						  </form>
+					<div>
 				</div>
 			</li>
 		</ul> <!-- .cd-slider -->
@@ -63,5 +151,6 @@
 <script src="../static/js/jquery-2.1.4.js"></script>
 <script src="../static/js/snap.svg-min.js"></script>
 <script src="../static/js/main.js"></script> <!-- Resource jQuery -->
+<script src="../static/js/query.js"></script> 
 </body>
 </html>
