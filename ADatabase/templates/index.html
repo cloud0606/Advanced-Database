@@ -8,9 +8,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Jaldi:700,400' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="../static/css/reset.css">
-	<link rel="stylesheet" href="../static/css/style.css">
 	<link rel="stylesheet" href="../static/css/query.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="../static/css/style.css">
 	<script src="../static/js/modernizr.js"></script>
 	
 	<title>Advanced Database Mongodb</title>
@@ -20,7 +20,7 @@
 	<section class="cd-slider-wrapper">
 		<ul class="cd-slider">
 			<li class="visible">
-				<div style="font-size:3em;">
+				<div>
 					<h2>Mongodb</h2>
 					<p>数据库小组作业展示</p>
 				</div>
@@ -33,9 +33,8 @@
 					<div class="UserQuery" >
 					<form id ="form_q1" method="post">
 						<div class="form-group">
-						  <label style="font-size: 2rem">用户ID</label>
 						  <input name='userID' class="form-control" id="UserID" >
-						  <small id="q1Help" class="form-text">根据用户ID，搜索用户所看到的电影名字和评分</small>
+						  <small id="q1Help" class="form-text text-muted" style="color: #FFFFFF!important;">根据用户ID，搜索用户所看到的电影名字和评分</small>
 						  <button id="btn_q1" type="button" class="btn btn-primary">Submit</button>
 						</div>
 					</form>
@@ -51,9 +50,8 @@
 					  <div class="UserQuery">
 						<form>
 							<div class="form-group">
-							  <label style="font-size: 2rem">关键字</label>
 							  <input type="email" class="form-control" id="KeyWord">
-							  <small id="q2Help" class="form-text ">根据关键字，搜索用户所看到的电影名字和评分</small>
+							  <small id="q2Help" class="form-text text-muted" style="color: #FFFFFF!important;">根据关键字，搜索用户所看到的电影名字和评分</small>
 							</div>
 							<button id="btn_q2" type="button"  class="btn btn-primary">Submit</button>
 						  </form>
@@ -69,9 +67,8 @@
 					<div class="UserQuery">
 						<form>
 							<div class="form-group">
-							  <label style="font-size: 2rem">风格</label>
 							  <input type="email" class="form-control" id="Style">
-							  <small id="q3Help" class="form-text ">查询某一风格最受欢迎的20部电影</small>
+							  <small id="q3Help" class="form-text text-muted" style="color: #FFFFFF!important;">查询某一风格最受欢迎的20部电影</small>
 							</div>
 							<button id="btn_q3" type="button"  class="btn btn-primary">Submit</button>
 						  </form>
@@ -80,14 +77,14 @@
 							</div>
 				</div>
 			</li>
-		</ul> <!-- .cd-slider -->
+		</ul> 
 		
 		<ol class="cd-slider-navigation">
 			<li class="selected"><a href="#0"><em>首页</em></a></li>
 			<li><a href="#0"><em>Item 1</em></a></li>
 			<li><a href="#0"><em>Item 2</em></a></li>
 			<li><a href="#0"><em>Item 3</em></a></li>
-		</ol> <!-- .cd-slider-navigation -->
+		</ol>
 		
 		<div class="cd-svg-cover" data-step1="M1402,800h-2V0.6c0-0.3,0-0.3,0-0.6h2v294V800z" data-step2="M1400,800H383L770.7,0.6c0.2-0.3,0.5-0.6,0.9-0.6H1400v294V800z" data-step3="M1400,800H0V0.6C0,0.4,0,0.3,0,0h1400v294V800z" data-step4="M615,800H0V0.6C0,0.4,0,0.3,0,0h615L393,312L615,800z" data-step5="M0,800h-2V0.6C-2,0.4-2,0.3-2,0h2v312V800z" data-step6="M-2,800h2L0,0.6C0,0.3,0,0.3,0,0l-2,0v294V800z" data-step7="M0,800h1017L629.3,0.6c-0.2-0.3-0.5-0.6-0.9-0.6L0,0l0,294L0,800z" data-step8="M0,800h1400V0.6c0-0.2,0-0.3,0-0.6L0,0l0,294L0,800z" data-step9="M785,800h615V0.6c0-0.2,0-0.3,0-0.6L785,0l222,312L785,800z" data-step10="M1400,800h2V0.6c0-0.2,0-0.3,0-0.6l-2,0v312V800z">
 			<svg height='100%' width="100%" preserveAspectRatio="none" viewBox="0 0 1400 800">
@@ -97,11 +94,11 @@
 			</svg>
 		</div>
 
-	</section> <!-- .cd-slider-wrapper -->
+	</section>
 
 <script src="../static/js/jquery-2.1.4.js"></script>
 <script src="../static/js/snap.svg-min.js"></script>
-<script src="../static/js/main.js"></script> <!-- Resource jQuery -->
+<script src="../static/js/main.js"></script>
 <script src="../static/js/query.js"></script> 
 </body>
 </html>
