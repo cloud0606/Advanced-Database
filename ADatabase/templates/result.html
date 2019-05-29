@@ -1,0 +1,24 @@
+<table class="table pre-scrollable" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Movie name</th>
+        <th scope="col">Score</th>
+        <th scope="col">tag</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+        <tr>
+                <th scope="row">{{ item.num }}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.score }}</td>
+                <td>
+                        {% for tag in item.tags %}
+                        <button type="button" class="btn btn-outline-info">{{ tag }}</button>
+                        {% endfor %}	
+                </td>
+        </tr>
+      {% endfor %}				
+    </tbody>
+</table>
