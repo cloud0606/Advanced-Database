@@ -1,12 +1,13 @@
 from django.shortcuts import render
 import json
 from django.template import loader, Context
-from ADatabase.database import *
+import ADatabase.database
 
 
 def hello(request):
-    data = movies()  # tesing
+    data = ADatabase.database.movies() # tesing
     context = {}
+    data.print()
     context['hello'] = 'Hello World!'
     return render(request, 'hello.html', context)
 

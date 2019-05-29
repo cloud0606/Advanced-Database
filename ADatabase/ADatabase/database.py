@@ -2,17 +2,17 @@ import pymongo
 from mongoengine import *
 import mongoengine
 
-# 处理数据库连接
-client = pymongo.MongoClient('mongodb://62.234.117.231:27017/')
-db = client['local']
-links = db.links
-tags = db.tags
-movies = db.movies
-ratings = db.ratings
-genome_tags = db.genome_tags
-genome_scores = db.genome_scores
-connect()
-
+# 数据库连接函数
+def connectDatabase():
+    client = pymongo.MongoClient('mongodb://62.234.117.231:27017/')
+    db = client['local']
+    # links = db.links
+    # tags = db.tags
+    # movies = db.movies
+    # ratings = db.ratings
+    # genome_tags = db.genome_tags
+    # genome_scores = db.genome_scores
+    return db
 
 class links(Document):
     movieId = StringField()
@@ -32,11 +32,21 @@ class tags(Document):
 
 
 class movies(Document):
+
+    # 处理数据库连接
     movieId = StringField()
     title = StringField()
     genres = StringField()
 
     meta = {'collection': 'movies'}
+
+    def print(self):
+        db=connectDatabase()
+        genome_scores=db.genome_scores
+        data1=genome_scores.find()
+        for data in data1:
+            print(data.get('tagId'))
+
 
 
 class ratings(Document):
