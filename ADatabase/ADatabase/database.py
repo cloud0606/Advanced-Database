@@ -7,15 +7,10 @@ import mongoengine
 def connectDatabase():
     client = pymongo.MongoClient('mongodb://62.234.117.231:27017/')
     db = client['local']
-    # links = db.links
-    # tags = db.tags
-    # movies = db.movies
-    # ratings = db.ratings
-    # genome_tags = db.genome_tags
-    # genome_scores = db.genome_scores
     return db
 
 
+# links集合
 class Links:
     movieId = StringField()
     tmdbId = StringField()
@@ -28,6 +23,7 @@ class Links:
         self.links = self.db.links
 
 
+# tags集合
 class Tags:
     userId = StringField()
     movieId = StringField()
@@ -41,6 +37,7 @@ class Tags:
         self.tags = self.db.tags
 
 
+# movies集合
 class Movies:
     # 处理数据库连接
     movieId = StringField()
@@ -61,6 +58,7 @@ class Movies:
             print(data.get('tagId'))
 
 
+# ratings集合
 class Ratings:
     movieId = StringField()
     userId = StringField()
@@ -74,6 +72,7 @@ class Ratings:
         self.movies = self.db.ratings
 
 
+# genome-tags集合
 class GenomeTags:
     tagId = StringField()
     tag = StringField()
@@ -84,6 +83,7 @@ class GenomeTags:
         self.genome_tags = self.db.genome_tags
 
 
+# genome-scores集合
 class GenomeScores:
     movieId = mongoengine.StringField()
     tagId = mongoengine.StringField()

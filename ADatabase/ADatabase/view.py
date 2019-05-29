@@ -1,21 +1,20 @@
 from django.shortcuts import render
 import json
-from django.template import loader, Context
-import ADatabase.database
+from ADatabase.search import missionOne,missionTwo,missionThree
 
 
+# 首页面
 def homePage(request):
     return render(request, 'index.html')
 
-
+# 测试页面，最后任务完成时删除
 def hello(request):
-    data = ADatabase.database.Movies()  # tesing
+    test=missionOne()
     context = {}
-    data.print()
     context['hello'] = 'Hello World!'
     return render(request, 'hello.html', context)
 
-
+# 查询一
 def query1(request):
     UserID = request.POST.get('UserID')
     result = {}
@@ -35,7 +34,7 @@ def query1(request):
         result['data'] = [item1, item2, item3, item3, item3, item3, item3]
     return render(request, template, result)
 
-
+# 查询二
 def query2(request):
     KeyWord = request.POST.get('KeyWord')
     result = {}
@@ -49,7 +48,7 @@ def query2(request):
         result['data'] = [item1, item2, item3, item3, item3, item3, item3]
     return render(request, template, result)
 
-
+# 查询三
 def query3(request):
     Style = request.POST.get('Style')
     result = {}
