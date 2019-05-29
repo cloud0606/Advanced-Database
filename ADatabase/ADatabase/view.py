@@ -9,7 +9,7 @@ def homePage(request):
 
 
 def hello(request):
-    data = ADatabase.database.movies()  # tesing
+    data = ADatabase.database.Movies()  # tesing
     context = {}
     data.print()
     context['hello'] = 'Hello World!'
