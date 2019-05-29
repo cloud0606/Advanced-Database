@@ -1,36 +1,66 @@
 // q1
-function query1() {
-    console.log('hhhh');
+    $("#btn_q1").click(function(){  
+    console.log('q1hhhh');
+    var UserID =$("#UserID").val()
     $.ajax({
         type : "POST",
-        url : "query",
+        url : "query1/",
         dataType : "html",
         data: {
             csrfmiddlewaretoken: '{{ csrf_token }}',
-            UserID: $("#UserID").val(),
+            UserID: UserID,
         },
         async : true,
         success : function(data) {
-            //$("#UserID").val(userID); 
+            $("#UserID").val(UserID); 
             $("#result_q1").html(data); 
         },
         error : function() {
             alert('请求有误');
         }
     });
-}
-// $(document).ready(function(){
-//     $("#btn_q1").click(function(){  
-//         console.log("点击成功"); 
-//         var userID = $("#UserID").val();   
-//         $.post(
-//             "/search/",
-//             {'UserID':userID},  // 参数传递
-//             function(data,status)
-//             {               
-//                $("#UserID").val(userID);  
-//                $("#result_q1").html(data);         
-//            }
-//        );
-//    });
-//    });
+    });
+
+    $("#btn_q2").click(function(){  
+        console.log('q2hhhh');
+        var KeyWord =$("#KeyWord").val()
+        $.ajax({
+            type : "POST",
+            url : "query2/",
+            dataType : "html",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                KeyWord: KeyWord,
+            },
+            async : true,
+            success : function(data) {
+                $("#KeyWord").val(KeyWord); 
+                $("#result_q2").html(data); 
+            },
+            error : function() {
+                alert('请求有误');
+            }
+        });
+        });
+
+$("#btn_q3").click(function(){  
+    console.log('q3hhhh');
+    var Style =$("#Style").val()
+    $.ajax({
+        type : "POST",
+        url : "query3/",
+        dataType : "html",
+        data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            Style: Style,
+        },
+        async : true,
+        success : function(data) {
+            $("#Style").val(Style); 
+            $("#result_q3").html(data); 
+        },
+        error : function() {
+            alert('请求有误');
+        }
+    });
+    });

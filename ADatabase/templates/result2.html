@@ -1,0 +1,16 @@
+<table class="table pre-scrollable" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+        <tr>
+                <th scope="row">{{ item.num }}</th>
+                <td>{{ item.name }}</td>
+        </tr>
+      {% endfor %}				
+    </tbody>
+</table>

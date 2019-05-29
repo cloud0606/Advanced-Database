@@ -1,14 +1,29 @@
+
+/* 用户输入框 */
 .UserQuery
 {
+    position: relative;
+    width:20%;
+    margin-left: 40%;
+}
+/* 结果显示 */
+.Result
+{
+    position: relative;
     width:80%;
     margin-left: 10%;
+    height:250px; 
+    overflow:auto  
 }
 
 .btn-primary {
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.6) !important;
-    border-color:  rgba(0, 0, 0, 0.6) !important;
-    font-weight: 700 !important;
+    font-size: 50px;
+    background-color: rgba(0,0,0, 0.2) !important;
+    border-color:  rgba(0, 0, 0, 0) !important;
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+    font-size: 2rem !important;
 }
 
 .table {

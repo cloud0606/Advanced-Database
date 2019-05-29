@@ -20,7 +20,7 @@
 	<section class="cd-slider-wrapper">
 		<ul class="cd-slider">
 			<li class="visible">
-				<div>
+				<div style="font-size:3em;">
 					<h2>Mongodb</h2>
 					<p>数据库小组作业展示</p>
 				</div>
@@ -29,35 +29,37 @@
 			<li>
 				<div>
 					<h2>查询用户观影信息 {{ question1 }}</h2>
-					<div class="UserQuery">
-					<form id ="form_q1">
+
+					<div class="UserQuery" >
+					<form id ="form_q1" method="post">
 						<div class="form-group">
-						  <label for="UserID">用户ID</label>
+						  <label style="font-size: 2rem">用户ID</label>
 						  <input name='userID' class="form-control" id="UserID" >
-						  <small id="q1Help" class="form-text text-muted">根据用户ID，搜索用户所看到的电影名字和评分</small>
-						  <button id="btn_q1" type="" class="btn btn-primary" onclick="query1()">Submit</button>
+						  <small id="q1Help" class="form-text">根据用户ID，搜索用户所看到的电影名字和评分</small>
+						  <button id="btn_q1" type="button" class="btn btn-primary">Submit</button>
 						</div>
-					  </form>
-					<div>
-					<div id="result_q1" class="pre-scrollable table-responsive" style="height:200px; overflow:auto" >
+					</form>
+				</div>
+					<div id="result_q1" class="Result"  class="pre-scrollable table-responsive"  >
 					</div>
-					
 				</div>
 			</li>
 
 			<li>
 				<div>
 					<h2>搜索关键词电影</h2>
-					<div class="UserQuery">
+					  <div class="UserQuery">
 						<form>
 							<div class="form-group">
-							  <label for="KeyWord">用户ID</label>
-							  <input type="email" class="form-control" id="KeyWord" aria-describedby="emailHelp" placeholder="Enter email">
-							  <small id="q2Help" class="form-text text-muted">根据用户ID，搜索用户所看到的电影名字和评分</small>
+							  <label style="font-size: 2rem">关键字</label>
+							  <input type="email" class="form-control" id="KeyWord">
+							  <small id="q2Help" class="form-text ">根据关键字，搜索用户所看到的电影名字和评分</small>
 							</div>
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button id="btn_q2" type="button"  class="btn btn-primary">Submit</button>
 						  </form>
-					<div>
+						</div>
+						<div id="result_q2"class="Result"  class="pre-scrollable table-responsive"  >
+							</div>
 				</div>
 			</li>
 
@@ -67,13 +69,15 @@
 					<div class="UserQuery">
 						<form>
 							<div class="form-group">
-							  <label for="Style">风格</label>
-							  <input type="email" class="form-control" id="Style" aria-describedby="emailHelp" placeholder="Enter email">
-							  <small id="q3Help" class="form-text text-muted">查询某一风格最受欢迎的20部电影</small>
+							  <label style="font-size: 2rem">风格</label>
+							  <input type="email" class="form-control" id="Style">
+							  <small id="q3Help" class="form-text ">查询某一风格最受欢迎的20部电影</small>
 							</div>
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button id="btn_q3" type="button"  class="btn btn-primary">Submit</button>
 						  </form>
-					<div>
+						</div>
+						<div id="result_q3"class="Result"  class="pre-scrollable table-responsive"  >
+							</div>
 				</div>
 			</li>
 		</ul> <!-- .cd-slider -->

@@ -2,7 +2,8 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Movie name</th>
+        <th scope="col">time</th>
+        <th scope="col">name</th>
         <th scope="col">Score</th>
         <th scope="col">tag</th>
       </tr>
@@ -11,11 +12,12 @@
         {% for item in data %}
         <tr>
                 <th scope="row">{{ item.num }}</th>
+                <td>{{ item.time }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.score }}</td>
                 <td>
-                        {% for tag in item.tags %}
-                        <button type="button" class="btn btn-outline-info">{{ tag }}</button>
+                        {% for t in item.tags %}
+                        <button type="button" class="btn btn-outline-info">{{ t.tag }}:{{ t.relevance }}</button>
                         {% endfor %}	
                 </td>
         </tr>
