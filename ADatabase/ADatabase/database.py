@@ -1,25 +1,70 @@
 import pymongo
-import json
 from mongoengine import *
+import mongoengine
 
-# 处理数据库连接
-
-class Mongodb():
-
+# 数据库连接函数
+def connectDatabase():
     client = pymongo.MongoClient('mongodb://62.234.117.231:27017/')
     db = client['local']
-    
-    # 根据用户ID进行查询
-    def userInformations(self,userID):
-        _record1 = {}
-        return render(request, 'index.html', {'record1': json.dumps(_record1)})
+    # links = db.links
+    # tags = db.tags
+    # movies = db.movies
+    # ratings = db.ratings
+    # genome_tags = db.genome_tags
+    # genome_scores = db.genome_scores
+    return db
 
-    # 关键词查询
-    def keyWordMovies(self,keyword):
-        _record2 = {}
-        return render(request, 'index.html', {'record2': json.dumps(_record2)})
+class links(Document):
+    movieId = StringField()
+    tmdbId = StringField()
+    imdbId = StringField()
 
-    # 电影风格查询
-    def Top20Movies(self,style):
-        _record3 = {}
-        return render(request, 'index.html', {'record3': json.dumps(_record3)})
+    meta = {'collection': 'links'}
+
+
+class tags(Document):
+    userId = StringField()
+    movieId = StringField()
+    tag = StringField()
+    timestamp = StringField()
+
+    meta = {'collection': 'tags'}
+
+
+class movies(Document):
+
+    # 处理数据库连接
+    movieId = StringField()
+    title = StringField()
+    genres = StringField()
+
+    meta = {'collection': 'movies'}
+
+    def print(self):
+        db=connectDatabase()
+        genome_scores=db.genome_scores
+        data1=genome_scores.find()
+        for data in data1:
+            print(data.get('tagId'))
+
+
+
+class ratings(Document):
+    movieId = StringField()
+    userId = StringField()
+    rating = StringField()
+    timestamp = StringField()
+
+    meta = {'collection': 'ratings'}
+
+
+class genome_tags(Document):
+    tagId = StringField()
+    tag = StringField()
+    meta = {'collection': 'genome_tags'}
+
+
+class genome_scores(Document):
+    movieId = mongoengine.StringField()
+    tagId = mongoengine.StringField()
+    relevance = mongoengine.StringField()
