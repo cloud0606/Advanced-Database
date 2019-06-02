@@ -79,3 +79,7 @@
 	如果引用标签基因组数据，请包括以下引文：
 
 > Jesse Vig, Shilad Sen, and John Riedl. 2012. The Tag Genome: Encoding Community Knowledge to Support Novel Interaction. ACM Trans. Interact. Intell. Syst. 2, 3: 13:1–13:44. <https://doi.org/10.1145/2362394.2362395>
+
+## 问题
+
+* `tags.csv`和`genome-tags.csv`中的tag存在大小写不一致的情况
