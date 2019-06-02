@@ -1,6 +1,6 @@
 # 数据说明
 
-##数据集
+## 数据集
 该数据集（ml-latest）描述了电影推荐服务[MovieLens]（http://movielens.org）的5星评级和自由文本标记活动。 它包含57598部电影的27753444个评级和1108997个标签应用程序。 这些数据是由，共有283228位用户在1995年1月9日到2018年9月26日期间创建的。这个数据库是在2018年9月26日生成的。
 
 * 数据集
@@ -10,7 +10,7 @@
 * ER图
 ![Alt Image Text](https://github.com/cloud0606/Advanced-Database/blob/master/img/E-R%E5%9B%BE1.png)
 
-##数据详细说明
+## 数据详细说明
 * **User Ids** 在 `ratings.csv`和`tags.csv`中是一样的（i.e. 同样的id在两个文件中代表同一个用户）
 
   
