@@ -3,7 +3,7 @@
 ---翻译整理于ml-latest.zip内的 README.txt
 
 ## 数据集
-该数据集（ml-latest）描述了电影推荐服务[MovieLens]（http://movielens.org）的5星评级和自由文本标记活动。 它包含57598部电影的27753444个评级和1108997个标签应用程序。 这些数据是由，共有283228位用户在1995年1月9日到2018年9月26日期间创建的。这个数据库是在2018年9月26日生成的。
+该数据集（ml-latest）描述了电影推荐服务[MovieLens]（http://movielens.org） 的5星评级和自由文本标记活动。 它包含57598部电影的27753444个评级和1108997个标签应用程序。 这些数据是由，共有283228位用户在1995年1月9日到2018年9月26日期间创建的。这个数据库是在2018年9月26日生成的。
 
 * 数据集
 ![Alt Image Text](https://github.com/cloud0606/Advanced-Database/blob/master/img/%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%842.png)
