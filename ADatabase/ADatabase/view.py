@@ -9,10 +9,9 @@ def homePage(request):
 
 # 测试页面，最后任务完成时删除
 def hello(request):
-    test=missionOne()
-    context = {}
-    context['hello'] = 'Hello World!'
-    return render(request, 'hello.html', context)
+    result=missionOne("1")
+    template = 'result1.html'
+    return render(request, template, result)
 
 # 查询一
 def query1(request):
@@ -21,14 +20,14 @@ def query1(request):
     template = 'result1.html'
     if UserID is not None:
         # 查询数据库
-        item1 = {'num': 1, 'time': '20180101', 'name': 'hello', 'score': 100,
+        item1 = {'num': 1, 'name': 'hello', 'score': 100,
                  'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
                           {'tag': 'comedy', 'relevance': 0.8}]}
 
-        item2 = {'num': 2, 'time': '20180201', 'name': 'captain marvel', 'score': 100,
+        item2 = {'num': 2, 'name': 'captain marvel', 'score': 100,
                  'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
                           {'tag': 'comedy', 'relevance': 0.8}]}
-        item3 = {'num': 3, 'time': '20180301', 'name': UserID, 'score': 100,
+        item3 = {'num': 3, 'name': "s", 'score': 100,
                  'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
                           {'tag': 'comedy', 'relevance': 0.8}]}
         result['data'] = [item1, item2, item3, item3, item3, item3, item3]
