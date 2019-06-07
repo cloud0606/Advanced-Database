@@ -21,14 +21,13 @@ def query1(request):
     template = 'result1.html'
     if UserID is not None:
         # 查询数据库
-        item1 = {'num': 1, 'time': '20180101', 'name': 'hello', 'score': 100,
+        item1 = {'num': 1, 'time': '20180101', 'name': 'hello', 'rating': 100,
                  'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
                           {'tag': 'comedy', 'relevance': 0.8}]}
-
-        item2 = {'num': 2, 'time': '20180201', 'name': 'captain marvel', 'score': 100,
+        item2 = {'num': 2, 'time': '20180201', 'name': 'captain marvel', 'rating': 100,
                  'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
                           {'tag': 'comedy', 'relevance': 0.8}]}
-        item3 = {'num': 3, 'time': '20180301', 'name': UserID, 'score': 100,
+        item3 = {'num': 3, 'time': '20180301', 'name': UserID, 'rating': 100,
                  'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
                           {'tag': 'comedy', 'relevance': 0.8}]}
         result['data'] = [item1, item2, item3, item3, item3, item3, item3]
@@ -40,11 +39,12 @@ def query2(request):
     result = {}
     template = 'result2.html'
     if KeyWord is not None:
+        
         # 查询数据库
 
-        item1 = {'num': 1, 'name': 'Avengers'}
-        item2 = {'num': 2, 'name': 'Iron Man1'}
-        item3 = {'num': 3, 'name': KeyWord}
+        item1 = {'num': 1, 'name': 'Avengers','rating':5}
+        item2 = {'num': 2, 'name': 'Iron Man1','rating':4.5}
+        item3 = {'num': 3, 'name': KeyWord,'rating':4.0}
         result['data'] = [item1, item2, item3, item3, item3, item3, item3]
     return render(request, template, result)
 
@@ -55,9 +55,9 @@ def query3(request):
     template = 'result2.html'
     if Style is not None:
         # 查询数据库
-        item1 = {'num': 1, 'name': 'Avengers'}
-        item2 = {'num': 2, 'name': 'Black Panther'}
-        item3 = {'num': 3, 'name': Style}
+        item1 = {'num': 1, 'name': 'Avengers','rating':5}
+        item2 = {'num': 2, 'name': 'Black Panther','rating':4.0}
+        item3 = {'num': 3, 'name': Style,'rating':4.5}
         result['data'] = [item1, item2, item3, item3, item3, item3, item3]
     return render(request, template, result)
 

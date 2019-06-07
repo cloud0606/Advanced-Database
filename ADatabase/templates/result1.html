@@ -3,7 +3,7 @@
       <tr>
         <th scope="col"></th>
         <th scope="col">name</th>
-        <th scope="col">Score</th>
+        <th scope="col">rating</th>
         <th scope="col">tag</th>
       </tr>
     </thead>
@@ -12,7 +12,7 @@
         <tr>
                 <th scope="row">{{ item.num }}</th>
                 <td>{{ item.name }}</td>
-                <td>{{ item.score }}</td>
+                <td>{{ item.rating }}</td>
                 <td>
                         {% for t in item.tags %}
                         <button type="button" class="btn btn-outline-info">{{ t.tag }}:{{ t.relevance }}</button>
