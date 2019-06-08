@@ -147,13 +147,18 @@ def missionTwo(keyword):
 
     movies = Movies()
     title = []
+    result = []
+    i = 1
 
     print("======movies-title=======")
     for x in movies.movies.find(query1):
-        title.append(x["title"])
+        dict = {"title":x["title"],"num":i}
+        i = i + 1
+        result.append(dict)
 
-    pprint.pprint(title)
-    return title
+
+    pprint.pprint(result)
+    return result
 
 
 
@@ -173,7 +178,7 @@ def missionThree(type):
     genome_tags = GenomeTags()
 
     query1 = {"genres": type}
-    query3 = {"genres": {"$regex": type}}  #正则表达式
+    query3 = {"genres": {"$regex": type,"$options":"i"}}  #正则表达式，i表示忽略大小写
     query4 = {"movieId": 4}
     query5 = {"tagId": 1}
     query6 = {"movieId": 422}
@@ -187,14 +192,19 @@ def missionThree(type):
 
     # 在movies中得到符合条件的movieId
     movieId = []
+    title = []
     i=0
-    for x in movies.movies.find(query3).limit(10):
+
+    for x in movies.movies.find(query3):
         movieId.append(x["movieId"])
         i+=1
     print(movieId)
     print(i)
     time_end1 = time.time()
     print(time_end1 - time_start)
+
+
+
 
     #在ratings表中对每一个movieId求average_rating
     print("=======ratings======")
@@ -215,73 +225,63 @@ def missionThree(type):
 
         # 求average_ratings
         sum = 0
-        for y in rating:
-            sum += y
-        average_rating = sum/len(rating)
-        print("average_rating = %f" % average_rating)
+
+        # 评分不足10条的，按照0来算
+        if (len(rating) <= 10):
+            average_rating = 0
+        else:
+            for y in rating:
+                sum += y
+            average_rating = sum / len(rating)
+
+
+
+        # 保留两位小数
+        average_rating = round(average_rating, 2)
+        print("average_rating = %.2f" % average_rating)
+
+
+
+        # 得到title
+        for y in movies.movies.find(query7):
+            title = y["title"]
+
         # 创建字典类型dict
-        movieId_averagerating_dict = {"movieId":x , "average_rating": average_rating}
+        movieId_averagerating_dict = {"movieId": x, "average_rating": average_rating, "title": title}
         movieId_averagerating_list.append(movieId_averagerating_dict)
+
 
     # 根据average_ratings 排序
     sorted_movieId_averageratings_list = sorted(movieId_averagerating_list,
-                                                key = operator.itemgetter('average_rating'),
+                                                key=operator.itemgetter('average_rating'),
                                                 reverse=True)
+
+    account = len(sorted_movieId_averageratings_list)
+    print("%s 类型一共有 %d 部电影"%(type,account))
+    result = sorted_movieId_averageratings_list[:20]
+
+    # 给result加上序号1-20
+    i =  1
+    for x in result:
+        result[i-1]["num"] = i
+        i = i+1
+
+
     # 打印最受欢迎的前20部电影
-    pprint.pprint(sorted_movieId_averageratings_list[:20])
+    pprint.pprint(result)
 
-    return sorted_movieId_averageratings_list
-
-
+    return result
 
 
-# # 任务一
-# # 胡云卿、王钲源、李沅城
-# def missionOne(useID):
-
-#     # 初始化数据库连接，获得collections
-#     tagscollection = Tags()
-#     tags = tagscollection.getData()
-
-#     moviescollection = Movies()
-#     movies = moviescollection.getData()
-
-#     ratingscollection = Ratings()
-#     ratings = ratingscollection.getData()
-
-#     genomescorescollection = GenomeScores()
-#     gs = genomescorescollection.getData()
-
-#     genometagsollection = GenomeTags()
-#     gt = genometagsollection.getData()
-
-#     query = {"tagId": 1}
-
-#     for post in gt.find(query):
-#         pprint.pprint(post)
-
-#     result = {}
-#     item1 = {'num': 1, 'name': 'hello', 'score': 100,
-#              'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
-#                       {'tag': 'comedy', 'relevance': 0.8}]}
-
-#     item2 = {'num': 2, 'name': 'captain marvel', 'score': 100,
-#              'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
-#                       {'tag': 'comedy', 'relevance': 0.8}]}
-#     item3 = {'num': 3, 'name': "s", 'score': 100,
-#              'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
-#                       {'tag': 'comedy', 'relevance': 0.8}]}
-#     result['data'] = [item1, item2, item3, item3, item3, item3, item3]
-#     return result
-
-
-# # 任务二
-# # 徐红莉、潘淑红
-# def missionTwo():
-#     pass
-
-
-# # 任务三
-# # 王硕、刘昱彤
-# def missionThree():
-#     pass
+# if __name__ == '__main__':
+#
+#     connectDatabase()
+#     print("successful--connectDatabase")
+#     time_start1 = time.time()
+#     # missionOne(1040)
+#
+#     missionTwo("2016")
+#
+#     # missionThree("children")
+#     time_end2 = time.time()
+#     print(time_end2 - time_start1)
