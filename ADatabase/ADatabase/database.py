@@ -7,8 +7,8 @@ import sys
 
 # # 数据库连接函数
 def connectDatabase():
-    # client = pymongo.MongoClient('mongodb://62.234.117.231:27017/')
-    client = pymongo.MongoClient('mongodb://localhost:27017/')
+    client = pymongo.MongoClient('mongodb://169.254.79.112:27017/')
+    #client = pymongo.MongoClient('mongodb://localhost:27017/')
     db = client['local']
     return db
 
