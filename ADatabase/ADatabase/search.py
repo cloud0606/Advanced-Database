@@ -22,14 +22,19 @@ def missionOne(userId):
     movieId = []
     title = []
     rating = []
-    dict = []
+    result = []
     timestamp = []
     tag = []
     tagId = []
     relevance = []
 
-    query1 = {"userId": userId}
+    dict_tag_relevance = {}
+    list_dict_tag_relevance = []
 
+
+
+    # 得到movieId
+    query1 = {"userId": userId}
     # 我们认为这里用户看过的电影就是用户评过等级或者打过tag的电影
     # 得到该用户看过的电影的movieid=tags.movieId+ratings.movieId
     for x in tags.tags.find(query1):
@@ -47,93 +52,63 @@ def missionOne(userId):
     print(movieId_remove_duplicate_value)
 
 
-    # 去movies表里面拿到title和rating
-    print("=============")
-    for y in movieId_remove_duplicate_value:
-
-
-        query2 = {"movieId": y}
-        query3 = {"userId": userId,"movieId": y}
-
-        # # 从tags中得到对应的3个tag
-        # # 按时间从新到旧排序，给出电影的前三个标签及关联度评分
-        # tag_3 = []
-        # tagId_3 = []
-        # relevance_3 = []
-        #
-        # print('按照时间降序排列得到最近的3个tag及关联度评分')
-        # tag_result = tags.tags.find(query2)
-        # for x in tag_result:
-        #     print(x["tag"])
-        #     tag_3.append(x["tag"])
-        #
-        #
-        #     query4 = {"tag": x['tag']}
-        #     # 得到tagId
-        #     for t in genome_tags.genome_tags(query4):
-        #         print(t["tagId"])
-        #         tagId_3.append(t["tagId"])
-        #
-        #         # 查relevance
-        #         query5 = {"movieId": y, "tagId": t['tagId']}
-        #         for z in genome_scores.genome_scores(query5):
-        #             print(z["relevance"])
-        #             relevance_3.append(z["relevance"])
-        #
-        # tag.append(tag_3)
-        # tagId.append(tagId_3)
-        # relevance.append((relevance_3))
-
-
-        # 得到title
-        for x in movies.movies.find(query2):
-            title.append(x["title"])
-
-        # 从ratings中得到timestamp
-        for x in ratings.ratings.find(query2):
-            timestamp.append(x["timestamp"])
-
-        # 得到此movieId的rating
-        # 查到result 0.0000n s
-        time_start = time.time()
-        result = ratings.ratings.find(query3)
-        print(result)
-        time_end = time.time()
-        print("查询result时间消耗：%f" % (time_end - time_start))
-
-        time_start = time.time()
-        for x in result:
-            time_end = time.time()
-            print("遍历ratings表时间消耗：%f" % (time_end - time_start))
-            rating.append(x["rating"])
-            print(x["rating"])
-        # time_end = time.time()
-        # print("遍历ratings表时间消耗：%f" % (time_end - time_start))
-
-
-
-
-    print(title)
-    print(rating)
-    # print(tag)
-    # print(tagId)
-    # print(relevance)
-
 
     # 整理成dict形式
     i = 0
     for x in  movieId_remove_duplicate_value:
-        dict.append({"movieId": x, "timestamp":timestamp[i] ,"title":title[i],
-                     "rating":rating[i]})
+
+        query2 = {"movieId": x}
+        query3 = {"userId": userId, "movieId": x}
+
+        # 得到title
+        for y in movies.movies.find(query2):
+            title.append(y["title"])
+
+        # 从ratings中得到timestamp
+        for y in ratings.ratings.find(query2):
+            timestamp.append(y["timestamp"])
+
+        # 得到此movieId的rating
+        for y in ratings.ratings.find(query3):
+            rating.append(y["rating"])
+            print(y["rating"])
+
+
+        # 得到tagId和relevance 并排序，得到前三个  形式如：{'relevance': 0.036250000000000004, 'tag': 805}
+        query4 = {"movieId": x}
+        for y in genome_scores.genome_scores.find(query4):
+            r = y["relevance"]
+            r = round(r, 4)
+
+            query5 = {"tagId": y["tagId"]}
+            for z in genome_tags.genome_tags.find(query5):
+
+                dict_tag_relevance = {"tag":z["tag"],"relevance":r}
+            list_dict_tag_relevance.append(dict_tag_relevance)
+        sorted_list_dict_tag_relevance = sorted(list_dict_tag_relevance,
+                                                key=operator.itemgetter('relevance'),reverse=True)  # 降序
+
+        tag_relevance = sorted_list_dict_tag_relevance[:3]
+
+
+
+        result.append({"movieId": x, "timestamp":timestamp[i] ,"title":title[i],
+                     "rating":rating[i],"tags_relevance":tag_relevance})
         i = i+1
 
-    print(dict)
-    sorted_dict = sorted(dict, key=operator.itemgetter('timestamp'), reverse=True)
-    print(sorted_dict)
+    pprint.pprint(result)
+    sorted_result = sorted(result, key=operator.itemgetter('timestamp'), reverse=True)
 
 
+    # 给result加上序号
+    i =  1
+    for x in sorted_result:
+        sorted_result[i-1]["num"] = i
+        i = i+1
+    pprint.pprint(sorted_result)
 
 
+    return sorted_result
 
 
 
@@ -273,15 +248,15 @@ def missionThree(type):
     return result
 
 
-# if __name__ == '__main__':
-#
-#     connectDatabase()
-#     print("successful--connectDatabase")
-#     time_start1 = time.time()
-#     # missionOne(1040)
-#
-#     missionTwo("2016")
-#
-#     # missionThree("children")
-#     time_end2 = time.time()
-#     print(time_end2 - time_start1)
+if __name__ == '__main__':
+
+    connectDatabase()
+    print("successful--connectDatabase")
+    time_start1 = time.time()
+    missionOne(13)
+
+    # missionTwo("2016")
+
+    # missionThree("children")
+    time_end2 = time.time()
+    print(time_end2 - time_start1)

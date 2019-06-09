@@ -21,16 +21,18 @@ def query1(request):
     template = 'result1.html'
     if UserID is not None:
         # 查询数据库
-        item1 = {'num': 1, 'time': '20180101', 'name': 'hello', 'rating': 100,
-                 'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
-                          {'tag': 'comedy', 'relevance': 0.8}]}
-        item2 = {'num': 2, 'time': '20180201', 'name': 'captain marvel', 'rating': 100,
-                 'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
-                          {'tag': 'comedy', 'relevance': 0.8}]}
-        item3 = {'num': 3, 'time': '20180301', 'name': UserID, 'rating': 100,
-                 'tags': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
-                          {'tag': 'comedy', 'relevance': 0.8}]}
-        result['data'] = [item1, item2, item3, item3, item3, item3, item3]
+        result['data'] = missionOne(UserID)
+        #
+        # item1 = {'num': 1, 'time': '20180101', 'title': 'hello', 'rating': 100,
+        #          'tags_relevance': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
+        #                   {'tag': 'comedy', 'relevance': 0.8}]}
+        # item2 = {'num': 2, 'time': '20180201', 'title': 'captain marvel', 'rating': 100,
+        #          'tags_relevance': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
+        #                   {'tag': 'comedy', 'relevance': 0.8}]}
+        # item3 = {'num': 3, 'time': '20180301', 'title': UserID, 'rating': 100,
+        #          'tags_relevance': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
+        #                   {'tag': 'comedy', 'relevance': 0.8}]}
+        # result['data'] = [item1, item2, item3, item3, item3, item3, item3]
     return render(request, template, result)
 
 # 查询二
