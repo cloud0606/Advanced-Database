@@ -4,8 +4,8 @@ def myMissionOne(userid):
 	list_sum =[]
 
 	#链接数据库
-	client = pymongo.MongoClient('mongodb://169.254.79.112:27017/')
-	# client = pymongo.MongoClient('mongodb://localhost:27017/')
+	# client = pymongo.MongoClient('mongodb://169.254.79.112:27017/')
+	client = pymongo.MongoClient('mongodb://localhost:27017/')
 	db = client['local']
 	#首先链接tags表 然后链接rating表
 	tags = db["tags"]
@@ -28,8 +28,8 @@ def myMissionOne(userid):
 	result = sorted(list_sum, key=lambda x: (x[0]))
 
 	#输出排序后的列表
-	# for i in list_sum:
-	# 	print(i)
+	for i in list_sum:
+		print(i)
 
 	dict_list = {}  #用于存储字典数据   key => list
 	for i in list_sum:
@@ -73,9 +73,9 @@ def myMissionOne(userid):
 			#dict_list[i].append(k)
 
 		# 打印出排好序的movieid
-	# print("*******打印出插入的数值*********")
-	# for i in dict_list.keys():      # timestamp ratings tagid revelance
-	# 	print(dict_list[i])
+	print("*******打印出插入的数值*********")
+	for i in dict_list.keys():      # timestamp ratings tagid revelance
+		print(dict_list[i])
 
 
 
@@ -121,6 +121,7 @@ def myMissionOne(userid):
 	#                   {'tag': 'comedy', 'relevance': 0.8}]}
 
 
+myMissionOne(26)
 
 
 

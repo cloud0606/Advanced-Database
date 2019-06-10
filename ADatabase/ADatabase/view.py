@@ -1,6 +1,8 @@
 from django.shortcuts import render
 import json
 from ADatabase.search import missionOne,missionTwo,missionThree
+import pprint
+# from ADatabase.test import myMissionOne
 
 
 # 首页面
@@ -21,15 +23,18 @@ def query1(request):
     template = 'result1.html'
     if UserID is not None:
         # 查询数据库
-        result['data'] = missionOne(UserID)
-        #
-        # item1 = {'num': 1, 'time': '20180101', 'title': 'hello', 'rating': 100,
+        print("%%%%%%%%%%%%------%%%%%%%",UserID)
+        result['data'] = missionOne(int(UserID))
+        print("%%%%%%%%%%%%%%%%%%%")
+        pprint.pprint(result)
+
+        # item1 = {'num': 1, 'timestamp': '20180101', 'title': 'hello', 'rating': 100,
         #          'tags_relevance': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
         #                   {'tag': 'comedy', 'relevance': 0.8}]}
-        # item2 = {'num': 2, 'time': '20180201', 'title': 'captain marvel', 'rating': 100,
+        # item2 = {'num': 2, 'timestamp': '20180201', 'title': 'captain marvel', 'rating': 100,
         #          'tags_relevance': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
         #                   {'tag': 'comedy', 'relevance': 0.8}]}
-        # item3 = {'num': 3, 'time': '20180301', 'title': UserID, 'rating': 100,
+        # item3 = {'num': 3, 'timestamp': '20180301', 'title': UserID, 'rating': 100,
         #          'tags_relevance': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
         #                   {'tag': 'comedy', 'relevance': 0.8}]}
         # result['data'] = [item1, item2, item3, item3, item3, item3, item3]
@@ -77,3 +82,5 @@ def Top20Movies(request):
     _record3 = {}
     return render(request, 'index.html', {'record3': json.dumps(_record3)})
 
+# if __name__ == '__main__':
+#     query1(request)

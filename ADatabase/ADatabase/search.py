@@ -1,23 +1,23 @@
 # # 数据库相关操作，本次大作业的三个任务的查询代码在该文件夹实现
 from ADatabase.database import *
 import pprint
-import pprint
 import operator
 import time
 
 # 任务一
-# 胡云卿、王钲源、李沅城
-
 # 根据用户ID，搜索用户所看的电影名字和评分及评分，按时间从新到旧排序，给出电影的前三个标签及关联度评分
-# 目前完成：根据用户ID，搜索用户所看的电影名字和评分及评分，按时间从新到旧排序
-# 未完成：给出电影的前三个标签及关联度评分
 def missionOne(userId):
+    # client = pymongo.MongoClient('mongodb://localhost:27017/')
+    # db = client.local
+    # tags = db.tags
+
 
     ratings = Ratings()
     tags = Tags()
     genome_scores = GenomeScores()
     genome_tags = GenomeTags()
     movies = Movies()
+
 
     movieId = []
     title = []
@@ -30,25 +30,26 @@ def missionOne(userId):
 
     dict_tag_relevance = {}
     list_dict_tag_relevance = []
-
+    query1 = {"userId":userId }
 
 
     # 得到movieId
-    query1 = {"userId": userId}
-    # 我们认为这里用户看过的电影就是用户评过等级或者打过tag的电影
-    # 得到该用户看过的电影的movieid=tags.movieId+ratings.movieId
-    for x in tags.tags.find(query1):
-        movieId.append(x["movieId"])
-        # dict.append({"movieId": x["movieId"],"timestamp":x ["timestamp"]})
-    for x in ratings.ratings.find(query1):
-        movieId.append(x["movieId"])
-        # dict.append({"movieId": x["movieId"], "timestamp": x["timestamp"]})
-    print(movieId)
-    # print(dict)
+    for y in ratings.ratings.find(query1):
+        movieId.append(y["movieId"])
+        print("执行7")
+        print(y["movieId"])
+
+    # for x in tags.tags.find(query1):
+    #     movieId.append(x["movieId"])
+    #     print("执行8")
+    #     print(x["movieId"])
+    print("movieId---------",movieId)
+
 
 
     # 要把重复的 movieId去掉，时间消耗约0.00003，忽略不计
     movieId_remove_duplicate_value = list(set(movieId))
+    print("movieId_remove_duplicate_value:")
     print(movieId_remove_duplicate_value)
 
 
@@ -58,12 +59,12 @@ def missionOne(userId):
     for x in  movieId_remove_duplicate_value:
 
         query2 = {"movieId": x}
-        query3 = {"userId": userId, "movieId": x}
+        query3 = {"movieId": x,"userId": userId}
 
         # 得到title
         for y in movies.movies.find(query2):
             title.append(y["title"])
-
+            # print("y = ",y)
         # 从ratings中得到timestamp
         for y in ratings.ratings.find(query2):
             timestamp.append(y["timestamp"])
@@ -91,9 +92,11 @@ def missionOne(userId):
         tag_relevance = sorted_list_dict_tag_relevance[:3]
 
 
-
-        result.append({"movieId": x, "timestamp":timestamp[i] ,"title":title[i],
-                     "rating":rating[i],"tags_relevance":tag_relevance})
+        #"timestamp":
+        result.append({"timestamp": timestamp[i], "title": title[i],
+                       "rating": rating[i], "tags_relevance": tag_relevance})
+        # result.append({ "timestamp":"qqqqqq","title":title[i],
+        #              "rating":100,"tags_relevance":tag_relevance})
         i = i+1
 
     pprint.pprint(result)
@@ -105,17 +108,22 @@ def missionOne(userId):
     for x in sorted_result:
         sorted_result[i-1]["num"] = i
         i = i+1
+
     pprint.pprint(sorted_result)
 
+    item1 = [{'num': 1, 'timestamp': '20180101', 'title': 'hello', 'rating': 100,
+             'tags_relevance': [{'tag': 'comedy', 'relevance': 0.8}, {'tag': 'comedy', 'relevance': 0.8},
+                                {'tag': 'comedy', 'relevance': 0.8}]}]
+    pprint.pprint(item1)
 
     return sorted_result
 
+    # return item1
 
 
 
 
 # 任务二
-# 徐红莉、潘淑红
 # 根据输入的关键词，查询电影名字里有关键词的电影
 def missionTwo(keyword):
     query1 = {"title": {"$regex": keyword,"$options":"i"}}  # 正则表达式,i表示忽略大小写
@@ -140,9 +148,7 @@ def missionTwo(keyword):
 
 
 # 任务三
-# 王硕、刘昱彤
 # 查询某一风格最受欢迎的20部电影（选做）
-# 问题：总共耗时巨长，待优化
 def missionThree(type):
 
     movies = Movies()
@@ -248,15 +254,16 @@ def missionThree(type):
     return result
 
 
-if __name__ == '__main__':
 
-    connectDatabase()
-    print("successful--connectDatabase")
-    time_start1 = time.time()
-    missionOne(13)
-
-    # missionTwo("2016")
-
-    # missionThree("children")
-    time_end2 = time.time()
-    print(time_end2 - time_start1)
+# if __name__ == '__main__':
+#
+#     connectDatabase()
+#     print("successful--connectDatabase")
+#     time_start1 = time.time()
+#     pprint.pprint(missionOne(13))
+#
+#     # missionTwo("2016")
+#
+#     # missionThree("children")
+#     time_end2 = time.time()
+#     print(time_end2 - time_start1)
