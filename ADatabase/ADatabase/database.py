@@ -3,7 +3,6 @@ from mongoengine import *
 import mongoengine
 
 import pymongo
-import sys
 
 # # 数据库连接函数
 def connectDatabase():
