@@ -7,10 +7,6 @@ import time
 # 任务一
 # 根据用户ID，搜索用户所看的电影名字和评分及评分，按时间从新到旧排序，给出电影的前三个标签及关联度评分
 def missionOne(userId):
-    # client = pymongo.MongoClient('mongodb://localhost:27017/')
-    # db = client.local
-    # tags = db.tags
-
 
     ratings = Ratings()
     tags = Tags()
@@ -39,11 +35,7 @@ def missionOne(userId):
         print("执行7")
         print(y["movieId"])
 
-    # for x in tags.tags.find(query1):
-    #     movieId.append(x["movieId"])
-    #     print("执行8")
-    #     print(x["movieId"])
-    print("movieId---------",movieId)
+    print("movieId：",movieId)
 
 
 
@@ -95,8 +87,7 @@ def missionOne(userId):
         #"timestamp":
         result.append({"timestamp": timestamp[i], "title": title[i],
                        "rating": rating[i], "tags_relevance": tag_relevance})
-        # result.append({ "timestamp":"qqqqqq","title":title[i],
-        #              "rating":100,"tags_relevance":tag_relevance})
+
         i = i+1
 
     pprint.pprint(result)
@@ -118,7 +109,6 @@ def missionOne(userId):
 
     return sorted_result
 
-    # return item1
 
 
 
@@ -167,8 +157,6 @@ def missionThree(type):
 
     time_start = time.time()
     print("=======movies======")
-    # results = movies.movies.find({query4})
-    # print(results)
 
 
     # 在movies中得到符合条件的movieId
@@ -253,17 +241,3 @@ def missionThree(type):
 
     return result
 
-
-
-# if __name__ == '__main__':
-#
-#     connectDatabase()
-#     print("successful--connectDatabase")
-#     time_start1 = time.time()
-#     pprint.pprint(missionOne(13))
-#
-#     # missionTwo("2016")
-#
-#     # missionThree("children")
-#     time_end2 = time.time()
-#     print(time_end2 - time_start1)
