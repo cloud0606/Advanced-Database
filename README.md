@@ -160,7 +160,11 @@ echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 ```
 
+
 - 徐红莉
+	- 参与查询任务A，编写任务A test.py文件，寻找更高性能的优化方式
+	- 数据导入
+	- 任务A的前后端传参
 
 - 潘淑红
     - 配置MongoDB环境，建立本地数据库
