@@ -8,13 +8,6 @@ from ADatabase.search import missionOne,missionTwo,missionThree
 def homePage(request):
     return render(request, 'index.html')
 
-# 测试页面，最后任务完成时删除
-def hello(request):
-    test=missionOne()
-    context = {}
-    context['hello'] = 'Hello World!'
-    return render(request, 'hello.html', context)
-
 # 查询一
 def query1(request):
     UserID = request.POST.get('UserID')
@@ -49,20 +42,3 @@ def query3(request):
 
     return render(request, template, result)
 
-
-# 根据用户ID进行查询
-def userInformations(request):
-    _record1 = {}
-    return render(request, 'index.html', {'record1': json.dumps(_record1)})
-
-
-# 关键词查询
-def keyWordMovies(request):
-    _record2 = {}
-    return render(request, 'index.html', {'record2': json.dumps(_record2)})
-
-
-# 电影风格查询
-def Top20Movies(request):
-    _record3 = {}
-    return render(request, 'index.html', {'record3': json.dumps(_record3)})
