@@ -152,13 +152,15 @@
 	- 中期报告文档整合
 	- 问题/解决：在Windows及Mac上安装时可以有GUI版本的安装包，但是在linux上apt下载时，会遇到自动更新的问题，如果不关闭自动更新无法固定版本下载安装，连接数据库会有错误，在服务启动前：
 	
-	```linux
-echo "mongodb-org hold" | sudo dpkg --set-selections
-echo "mongodb-org-server hold" | sudo dpkg --set-selections
-echo "mongodb-org-shell hold" | sudo dpkg --set-selections
-echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
-echo "mongodb-org-tools hold" | sudo dpkg --set-selections
-```
+		
+		```linux
+		echo "mongodb-org hold" | sudo dpkg --set-selections
+		echo "mongodb-org-server hold" | sudo dpkg --set-selections
+		echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+		echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+		echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+		```
+
 
 
 - 徐红莉
